@@ -2,6 +2,8 @@
 
 ### Just clone and use!
 
+![NG6-Starter-Extended Preview](http://nsa38.casimages.com/img/2016/11/22/16112209343680707.png "NG6-Starter-Extended Preview")
+
 ---
 
 <p align="center">
