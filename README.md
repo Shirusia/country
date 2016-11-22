@@ -1,4 +1,4 @@
-## This _NG6-Starter_ fork includes _SASS_ support instead of Stylus, _Bootstrap_ and _Font-Awesome_ to help you kickstart faster your AngularJS apps.
+## This NG6-Starter fork includes _SASS_ support instead of Stylus, _Bootstrap_ and _Font-Awesome_ to help you kickstart faster your AngularJS apps.
 
 ### Just clone and use!
 
