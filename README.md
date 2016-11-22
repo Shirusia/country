@@ -1,3 +1,9 @@
+## This _NG6-Starter_ fork includes _SASS_ support instead of Stylus, _Bootstrap_ and _Font-Awesome_ to help you kickstart faster your AngularJS apps.
+
+### Just clone and use!
+
+---
+
 <p align="center">
   <a href="http://courses.angularclass.com/courses/angular-2-fundamentals" target="_blank">
     <img width="438" alt="Angular 2 Fundamentals" src="https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png">
