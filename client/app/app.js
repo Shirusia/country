@@ -4,6 +4,8 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import 'normalize.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../../node_modules/font-awesome/css/font-awesome.css';
 
 angular.module('app', [
     uiRouter,
