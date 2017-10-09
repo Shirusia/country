@@ -1,0 +1,48 @@
+<layout>
+    <search-country on-search="$ctrl.searchData($event)"></search-country>
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="region in $ctrl.regions">
+            <input type="checkbox" ng-click="$ctrl.toggleCountriesFromRegion(region)" ng-model="region.selected"> {{region.name}}
+        </li>
+    </ul>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        <a class="pointer" ng-click="$ctrl.changeOrder('');">
+                            Country
+                            <i class="fa"
+                            ng-class="{'fa-chevron-down':$ctrl.options.orderDirection=='1','fa-chevron-up':$ctrl.options.orderDirection=='0'}"
+                            ng-show="!$ctrl.options.orderBy"></i>
+                        </a>
+                    </th>
+                    <th>
+                        <a class="pointer" ng-click="$ctrl.changeOrder('capital');">
+                            Capital
+                            <i class="fa"
+                            ng-class="{'fa-chevron-down':$ctrl.options.orderDirection=='1','fa-chevron-up':$ctrl.options.orderDirection=='0'}"
+                            ng-show="$ctrl.options.orderBy == 'capital'"></i>
+                        </a>    
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="country in $ctrl.countryList | orderBy:$ctrl.options.orderBy:$ctrl.options.orderDirection">
+                    <td>
+                            <input type="checkbox" ng-click="$ctrl.toggleCountry(country)" ng-model="country.selected">
+                    </td>
+                    <td>
+                        {{country.name}}
+                    </td>    
+                    <td>
+                        {{country.capital}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</layout>

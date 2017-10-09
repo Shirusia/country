@@ -1,5 +1,6 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import ngResource from 'angular-resource';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
@@ -9,6 +10,7 @@ import '../../node_modules/font-awesome/css/font-awesome.css';
 
 angular.module('app', [
     uiRouter,
+    ngResource,
     Common,
     Components
   ])
