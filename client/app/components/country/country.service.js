@@ -8,19 +8,17 @@ class countryService {
     }
 
     getCountries() {
-      return  this.countryList = this.getAll.query();
+      return  this.countries = this.getAll.query();
     }
 
     searchCountries(search) {
       if (search != "") {
-        this.countryList = this.search.query({search: search}, function (data){
-        }, function (error) {
-        })  
+        this.countries = this.search.query({search: search});
       } else {
-        this.countryList = this.getAll.query()
+        this.countries = this.getAll.query();
       }
       
-      return this.countryList
+      return this.countries;
     }
   }
 

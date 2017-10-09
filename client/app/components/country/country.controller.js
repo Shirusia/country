@@ -4,8 +4,9 @@ export default class CountryController {
         "ngInject";
         this.$resource = $resource;
         this.countryService = countryService;
-        this.countryList = [];
-        this.countrySelected = [];
+        this.countries = [];
+        this.error = {};
+        //zamockowane dane dotyczące kontynentów
         this.regions = [
             {
                 name: "Africa"
@@ -23,46 +24,38 @@ export default class CountryController {
                 name: "Oceania"
             }
         ];
-
         this.options = {
-                orderBy: "",
-                orderDirection: false
-            }
+            orderBy: "",
+            orderDirection: false
+        }
     }
 
     $onInit(){
-        this.countryService.getCountries().$promise.then( (response) => {
-            this.countryList = response;
-            //zapamiętywanie zaznaczonych opcji 
-            this.countrySelected = response.map(i => {return {name: i.name, region: i.region}});
-            console.log(this.countryList)
+        this.countryService.getCountries().$promise.then((response) => {
+            this.countries = response;
         });
     }
 
     searchData(event) {
-        event.countryList.$promise.then((response) => {
-            this.countryList = response;
-        }).finally(() => {
-            this.countryList.forEach(c => {
-                for (let i = 0; i < this.countrySelected.length; i++) { 
-                    if(this.countrySelected[i].name == c.name && this.countrySelected[i].selected) {
-                        c.selected = true;
-                    }
-                }
-            })
+        event.countries.$promise.then((response) => {
+            this.countries = response;
+            this.error = {};
+            //odznaczenie przy nowych wynikach wyszukiwania
+            this.regions.filter(r => r.selected).forEach(r => r.selected = false)
+        }, (error) => {
+            this.error = error.data;
+            console.log(this.error);
         });
     }
 
     toggleCountriesFromRegion(region) {
-        this.countryList.filter(i => i.region == region.name).forEach(i => i.selected = region.selected);
-        this.countrySelected.filter(i => i.region == region.name).forEach(i => i.selected = region.selected);
+        this.countries.filter(i => i.region == region.name).forEach(i => i.selected = region.selected);
     }
 
     toggleCountry(country){
-        let countries = this.countryList.filter(i => i.region == country.region && !i.selected);
+        let notSelectedCountries = this.countries.filter(i => i.region == country.region && !i.selected);
         let region = this.regions.find(r => r.name == country.region)
-
-        region.selected = countries.length ? false : true;
+        region.selected = notSelectedCountries.length ? false : true;
     }
 
     changeOrder(type) {

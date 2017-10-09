@@ -1,4 +1,7 @@
 <layout>
+    <div class="alert alert-danger" ng-if="$ctrl.error.message">
+        <strong>{{$ctrl.error.message}}</strong>
+    </div>
     <search-country on-search="$ctrl.searchData($event)"></search-country>
     <hr>
     <ul class="list-group">
@@ -31,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="country in $ctrl.countryList | orderBy:$ctrl.options.orderBy:$ctrl.options.orderDirection">
+                <tr ng-repeat="country in $ctrl.countries | orderBy:$ctrl.options.orderBy:$ctrl.options.orderDirection">
                     <td>
                             <input type="checkbox" ng-click="$ctrl.toggleCountry(country)" ng-model="country.selected">
                     </td>

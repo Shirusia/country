@@ -9,7 +9,7 @@ export default class searchCountryController {
     searchCountries() {
        this.onSearch({
            $event: {
-            countryList: this.countryService.searchCountries(this.search)
+            countries: this.countryService.searchCountries(this.search)
            }
        }) 
     }
